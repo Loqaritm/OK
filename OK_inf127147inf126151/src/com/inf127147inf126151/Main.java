@@ -8,5 +8,5 @@ public class Main {
         Generator.generuj();
 
     }
-    //added by JM
+
 }

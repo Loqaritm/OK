@@ -79,4 +79,20 @@ public class Rozwiazanie {
             }
         }
     }
+
+    public ArrayList<ObiektNaMaszynie> getMaszynaA() {
+        return maszynaA;
+    }
+
+    public void setMaszynaA(ArrayList<ObiektNaMaszynie> maszynaA) {
+        this.maszynaA = maszynaA;
+    }
+
+    public ArrayList<ObiektNaMaszynie> getMaszynaB() {
+        return maszynaB;
+    }
+
+    public void setMaszynaB(ArrayList<ObiektNaMaszynie> maszynaB) {
+        this.maszynaB = maszynaB;
+    }
 }
