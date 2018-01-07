@@ -3,7 +3,7 @@ package com.inf127147inf126151;
 import java.util.ArrayList;
 
 public class Generator {
-    public static void generuj() {
+    public static Rozwiazanie generuj() {
 
         ArrayList<Zadanie> listaZadan = new ArrayList<Zadanie>();
 
@@ -27,8 +27,7 @@ public class Generator {
         //TODO: to powinno byc w petli for (int i=0; i<Stale.domyslnaWielkoscPopulacji; i++) ale zostawiłem bez na razie, dla wygody przegladu.
         Rozwiazanie rozwiazanie1 = generujRozwiazanie(listaZadan,listaMaintenance);
         rozwiazanie1.WyswietlRozwiazanie();
-
-
+        return rozwiazanie1;
     }
 
     private static ArrayList<ObiektNaMaszynie> generujMaintenance(){  //generuje zadana w stalych liczbe maintenance. maintenance sa posortowane i nie nachodza na siebie

@@ -3,8 +3,8 @@ package com.inf127147inf126151;
 import java.util.ArrayList;
 
 public class Rozwiazanie {
-    private ArrayList<ObiektNaMaszynie> maszynaA;
-    private ArrayList<ObiektNaMaszynie> maszynaB;
+    private ArrayList<ObiektNaMaszynie> maszynaA = new ArrayList<>();
+    private ArrayList<ObiektNaMaszynie> maszynaB = new ArrayList<>();
     private int aktualnyCzasB=0;
     private int pozycjaNaMaszynieB=0;
     private int iloscMaintenanceLeft;
@@ -53,7 +53,7 @@ public class Rozwiazanie {
                     pozycjaNaMaszynieB++;
                     aktualnyCzasB=operacja.getCzasStartu()+operacja.getCzasTrwania();
                 }
-                else{                                           //jezeli nie zmiesci sie przed maintenance
+                else{                                                                                   //jezeli nie zmiesci sie przed maintenance
                     pozycjaNaMaszynieB++;                                                               //przesun sie element dalej
                     aktualnyCzasB=obiektNaMaszynie.getCzasStartu()+obiektNaMaszynie.getCzasTrwania();   //zmien czas na ten po maintenance
                     iloscMaintenanceLeft--;                                                             //wazne! zmniejsza ilosc maintenance przed nami
@@ -66,18 +66,32 @@ public class Rozwiazanie {
 
     //TODO: Poprawic jakosc wyswietlania zeby to mialo wiecej sensu dla czlowieka i mialo wiecej informacji.
     public void WyswietlRozwiazanie(){
-        System.out.println("Maszyna A: ");
-        for (int i=0; i<maszynaA.size();i++){
-            System.out.println("Zadanie nr: "+maszynaA.get(i).getIndex());
-        }
-        System.out.println("==========");
-        System.out.println("Maszyna B: ");
+        System.out.println("Maszyna A | B ");
         for (int i=0; i<maszynaB.size();i++){
-            if(maszynaB.get(i).getClass()==Maintenance.class) System.out.println("MAINTENANCE");
+            String mB = (maszynaB.get(i).getClass()==Maintenance.class) ? "MAINTENANCE" : Integer.toString(maszynaB.get(i).getIndex());
+            String mA;
+            if(maszynaA.size()> i){
+                mA = Integer.toString(maszynaA.get(i).getIndex());
+                if(maszynaA.get(i).getIndex() >=10){
+                    System.out.println(" Zadanie nr: "+ mA + " | " + mB);
+                }
+                else{
+                    System.out.println(" Zadanie nr: "+ mA + "  | " + mB);        //dadana spacja zeby sie rowno wyswietlalo :)
+                }
+            }
             else{
-                System.out.println("Zadanie nr: "+maszynaB.get(i).getIndex());
+                mA = " ";
+                System.out.println(" Zadanie nr: "+ mA + "  | " + mB);
             }
         }
+//        System.out.println("==========");
+//        System.out.println("Maszyna B: ");
+//        for (int i=0; i<maszynaB.size();i++){
+//            if(maszynaB.get(i).getClass()==Maintenance.class) System.out.println("MAINTENANCE");
+//            else{
+//                System.out.println("Zadanie nr: "+maszynaB.get(i).getIndex());
+//            }
+//        }
     }
 
     public ArrayList<ObiektNaMaszynie> getMaszynaA() {
@@ -94,5 +108,12 @@ public class Rozwiazanie {
 
     public void setMaszynaB(ArrayList<ObiektNaMaszynie> maszynaB) {
         this.maszynaB = maszynaB;
+    }
+
+    public void addSinglyMaszynaA(ObiektNaMaszynie o){
+        this.maszynaA.add(o);
+    }
+    public void addSinglyMaszynaB(ObiektNaMaszynie o){
+        this.maszynaB.add(o);
     }
 }
