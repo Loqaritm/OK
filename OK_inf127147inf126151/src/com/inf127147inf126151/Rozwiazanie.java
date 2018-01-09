@@ -73,15 +73,15 @@ public class Rozwiazanie {
             if(maszynaA.size()> i){
                 mA = Integer.toString(maszynaA.get(i).getIndex());
                 if(maszynaA.get(i).getIndex() >=10){
-                    System.out.println(" Zadanie nr: "+ mA + " | " + mB);
+                    System.out.println( i +" Zadanie nr: "+ mA + "_"+ maszynaA.get(i) +" | " + mB);
                 }
                 else{
-                    System.out.println(" Zadanie nr: "+ mA + "  | " + mB);        //dadana spacja zeby sie rowno wyswietlalo :)
+                    System.out.println( i +" Zadanie nr: "+ mA + "  | " + mB);        //dadana spacja zeby sie rowno wyswietlalo :)
                 }
             }
             else{
                 mA = " ";
-                System.out.println(" Zadanie nr: "+ mA + "  | " + mB);
+                System.out.println( i +" Zadanie nr: "+ mA + "  | " + mB);
             }
         }
 //        System.out.println("==========");
