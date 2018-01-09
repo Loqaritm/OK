@@ -53,7 +53,6 @@ public class Generator {
 
         while(listaZadan.size()!=0) {
             int i = (int) (Math.random() * listaZadan.size());
-
             rozwiazanie.dodajOperacje(listaZadan.get(i).getDwieOperacje().get(0));
             listaZadan.get(i).getDwieOperacje().remove(0);
             if (listaZadan.get(i).getDwieOperacje().size() == 0) listaZadan.remove(i);

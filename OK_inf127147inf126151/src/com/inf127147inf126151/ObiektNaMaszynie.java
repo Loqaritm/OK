@@ -17,4 +17,10 @@ public abstract class ObiektNaMaszynie{
         return index;
     }
 
+    public int getNumerOperacjiWZadaniu(){
+        return -1;
+    }
+
+
+
 }
