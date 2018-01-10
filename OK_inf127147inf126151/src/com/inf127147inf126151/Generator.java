@@ -1,5 +1,6 @@
 package com.inf127147inf126151;
 
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 public class Generator {
@@ -51,11 +52,37 @@ public class Generator {
     private static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan, ArrayList<ObiektNaMaszynie> listaMaintenance){
         Rozwiazanie rozwiazanie = new Rozwiazanie(listaMaintenance);
 
-        while(listaZadan.size()!=0) {
-            int i = (int) (Math.random() * listaZadan.size());
-            rozwiazanie.dodajOperacje(listaZadan.get(i).getDwieOperacje().get(0));
-            listaZadan.get(i).getDwieOperacje().remove(0);
-            if (listaZadan.get(i).getDwieOperacje().size() == 0) listaZadan.remove(i);
+        ArrayList<ArrayList<Integer>> pomocnicza = new ArrayList<>();
+        for (int i=0; i<50;i++){
+            ArrayList<Integer> temp = new ArrayList<>();
+            temp.add(0);
+            temp.add(1);
+            temp.add(i);
+            pomocnicza.add(temp);
+        }
+
+//        for (int i=0; i<50;i++){
+//            System.out.println(pomocnicza.get(i));
+//        }
+
+        while(pomocnicza.size()!=0) {
+            int i = (int) (Math.random()*pomocnicza.size());
+            int j = pomocnicza.get(i).get(0);
+            Zadanie tempOperacja = listaZadan.get(pomocnicza.get(i).get(pomocnicza.get(i).size()-1));
+            rozwiazanie.dodajOperacje(tempOperacja.getDwieOperacje().get(j));
+            pomocnicza.get(i).remove(0);
+
+//            System.out.println(pomocnicza.get(i));
+
+            if (pomocnicza.get(i).size() == 1) pomocnicza.remove(i);
+
+
+
+
+//            int i = (int) (Math.random() * listaZadan.size());
+//            rozwiazanie.dodajOperacje(listaZadan.get(i).getDwieOperacje().get(0));
+//            listaZadan.get(i).getDwieOperacje().remove(0);
+//            if (listaZadan.get(i).getDwieOperacje().size() == 0) listaZadan.remove(i);
         }
         return rozwiazanie;
     }
