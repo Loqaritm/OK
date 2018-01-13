@@ -22,5 +22,11 @@ public abstract class ObiektNaMaszynie{
     }
 
 
+    public abstract Object toMaszynaA();
 
+    public abstract Object toMaszynaB();
+
+    public void setIndex(int id) {
+        this.index = id;
+    }
 }

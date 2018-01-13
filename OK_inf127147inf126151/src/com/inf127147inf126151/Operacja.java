@@ -55,6 +55,11 @@ public class Operacja extends ObiektNaMaszynie{
     }
 
     @Override
+    public void setIndex(int id){
+        this.index = id;
+    }
+
+    @Override
     public int getNumerOperacjiWZadaniu() {
         return numerOperacjiWZadaniu;
     }
@@ -77,5 +82,17 @@ public class Operacja extends ObiektNaMaszynie{
 
     public void setCzasGotowosci(int czasGotowosci) {
         this.czasGotowosci = czasGotowosci;
+    }
+
+    @Override
+    public Operacja toMaszynaA(){
+        this.maszynaA = true;
+        return this;
+    }
+
+    @Override
+    public Operacja toMaszynaB(){
+        this.maszynaA = false;
+        return this;
     }
 }

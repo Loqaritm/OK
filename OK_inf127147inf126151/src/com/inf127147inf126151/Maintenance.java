@@ -28,4 +28,14 @@ public class Maintenance extends ObiektNaMaszynie implements Comparable<Maintena
     public int getCzasTrwania() {
         return czasTrwania;
     }
+
+    @Override
+    public Object toMaszynaA() {
+        return null;
+    }
+
+    @Override
+    public Object toMaszynaB() {
+        return null;
+    }
 }

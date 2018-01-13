@@ -79,12 +79,18 @@ public class Rozwiazanie {
     public void WyswietlRozwiazanie(){
         System.out.println("Maszyna A | B ");
         for (int i=0; i<maszynaB.size();i++){
-            String mB = (maszynaB.get(i).getClass()==Maintenance.class) ? "MAINTENANCE" : Integer.toString(maszynaB.get(i).getIndex()) + "_"+ Integer.toString(maszynaB.get(i).getNumerOperacjiWZadaniu());
+            String mB = (maszynaB.get(i).getClass()==Maintenance.class) ? "MAINTENANCE -" + maszynaB.get(i).getCzasStartu()
+                    + ":" + maszynaB.get(i).getCzasTrwania():
+                    Integer.toString(maszynaB.get(i).getIndex()) + "_"+
+                            Integer.toString(maszynaB.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaB.get(i).getCzasStartu()
+                    + ":" + maszynaB.get(i).getCzasTrwania();
             String mA;
             if(maszynaA.size()> i){
-                mA = Integer.toString(maszynaA.get(i).getIndex()) + "_"+ Integer.toString(maszynaA.get(i).getNumerOperacjiWZadaniu());
+                mA = Integer.toString(maszynaA.get(i).getIndex()) + "_"+
+                        Integer.toString(maszynaA.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaA.get(i).getCzasStartu()
+                            + ":" + maszynaA.get(i).getCzasTrwania();
                 if(maszynaA.get(i).getIndex() >=10){
-                    System.out.println( i +" Zadanie nr: "+ mA + /*"_"+ maszynaA.get(i) +*/" | " + mB);
+                    System.out.println( i +" Zadanie nr: "+ mA + " | " + mB);
                 }
                 else{
                     System.out.println( i +" Zadanie nr: "+ mA + "  | " + mB);        //dadana spacja zeby sie rowno wyswietlalo :)
@@ -95,14 +101,6 @@ public class Rozwiazanie {
                 System.out.println( i +" Zadanie nr: "+ mA + "  | " + mB);
             }
         }
-//        System.out.println("==========");
-//        System.out.println("Maszyna B: ");
-//        for (int i=0; i<maszynaB.size();i++){
-//            if(maszynaB.get(i).getClass()==Maintenance.class) System.out.println("MAINTENANCE");
-//            else{
-//                System.out.println("Zadanie nr: "+maszynaB.get(i).getIndex());
-//            }
-//        }
     }
 
     public ArrayList<ObiektNaMaszynie> getMaszynaA() {
@@ -121,10 +119,4 @@ public class Rozwiazanie {
         this.maszynaB = maszynaB;
     }
 
-    public void addSinglyMaszynaA(ObiektNaMaszynie o){
-        this.maszynaA.add(o);
-    }
-    public void addSinglyMaszynaB(ObiektNaMaszynie o){
-        this.maszynaB.add(o);
-    }
 }
