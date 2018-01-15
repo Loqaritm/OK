@@ -3,7 +3,7 @@ package com.inf127147inf126151;
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
-public class Generator {
+public abstract class Generator {
     public static ArrayList<Zadanie> generuj() {
 
         ArrayList<Zadanie> listaZadan = new ArrayList<Zadanie>();
@@ -51,11 +51,12 @@ public class Generator {
     }
 
     //TODO: PAMIETAC o dodaniu kopiowania listy zadan bo inaczej to troche chujnia z grzybnia. wtedy mozna by zostawic listeZadan statyczna, jako jakis punkt odniesienia, a pracowac przy tworzeniu jednego z rozwiazan na kopii.
-    public static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan, ArrayList<ObiektNaMaszynie> listaMaintenance){
+    public static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan2, ArrayList<ObiektNaMaszynie> listaMaintenance){
         Rozwiazanie rozwiazanie = new Rozwiazanie(listaMaintenance);
+        ArrayList<Zadanie> listaZadan = new ArrayList<>(listaZadan2);
 
         ArrayList<ArrayList<Integer>> pomocnicza = new ArrayList<>();
-        for (int i=0; i<50;i++){
+        for (int i=0; i<listaZadan.size();i++){
             ArrayList<Integer> temp = new ArrayList<>();
             temp.add(0);
             temp.add(1);
@@ -74,17 +75,7 @@ public class Generator {
             rozwiazanie.dodajOperacje(tempOperacja.getDwieOperacje().get(j));
             pomocnicza.get(i).remove(0);
 
-//            System.out.println(pomocnicza.get(i));
-
             if (pomocnicza.get(i).size() == 1) pomocnicza.remove(i);
-
-
-
-
-//            int i = (int) (Math.random() * listaZadan.size());
-//            rozwiazanie.dodajOperacje(listaZadan.get(i).getDwieOperacje().get(0));
-//            listaZadan.get(i).getDwieOperacje().remove(0);
-//            if (listaZadan.get(i).getDwieOperacje().size() == 0) listaZadan.remove(i);
         }
         return rozwiazanie;
     }

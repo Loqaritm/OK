@@ -3,8 +3,8 @@ package com.inf127147inf126151;
 import java.util.ArrayList;
 
 public class Rozwiazanie {
-    private ArrayList<ObiektNaMaszynie> maszynaA = new ArrayList<>();
-    private ArrayList<ObiektNaMaszynie> maszynaB = new ArrayList<>();
+    private ArrayList<ObiektNaMaszynie> maszynaA = new ArrayList<>(0);
+    private ArrayList<ObiektNaMaszynie> maszynaB = new ArrayList<>(0);
     private int aktualnyCzasA=0;
     private int aktualnyCzasB=0;
     private int pozycjaNaMaszynieB=0;
@@ -16,7 +16,7 @@ public class Rozwiazanie {
 
     public Rozwiazanie(ArrayList<ObiektNaMaszynie> listaMaintenance) {
         this.maszynaA = new ArrayList<>();
-        this.maszynaB = listaMaintenance;
+        this.maszynaB = new ArrayList<ObiektNaMaszynie>(listaMaintenance);
         iloscMaintenanceLeft=listaMaintenance.size();
     }
 
@@ -74,7 +74,6 @@ public class Rozwiazanie {
                     aktualnyCzasB=obiektNaMaszynie.getCzasStartu()+obiektNaMaszynie.getCzasTrwania();   //zmien czas na ten po maintenance
                     iloscMaintenanceLeft--;                                                             //wazne! zmniejsza ilosc maintenance przed nami
                     dodajOperacje(operacja);                                                            //sprobuj wlozyc element po maintenance
-                    return;
                 }
             }
         }
