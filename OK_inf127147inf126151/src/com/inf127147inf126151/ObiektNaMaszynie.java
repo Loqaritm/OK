@@ -1,12 +1,16 @@
 package com.inf127147inf126151;
 
 public abstract class ObiektNaMaszynie{
-    private int czasStartu;
-    private int czasTrwania;
+    protected int czasStartu;
+    protected int czasTrwania;
     private int index;
 
     public int getCzasStartu() {
         return czasStartu;
+    }
+
+    public void setCzasStartu(int czasStartu) {
+        this.czasStartu = czasStartu;
     }
 
     public int getCzasTrwania() {
@@ -21,6 +25,9 @@ public abstract class ObiektNaMaszynie{
         return -1;
     }
 
+    public int getCzasStartu2(){
+        return -1;
+    }
 
     public abstract Object toMaszynaA();
 

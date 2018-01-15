@@ -24,12 +24,14 @@ public class Rozwiazanie {
         if (operacja.isMaszynaA()) {
             this.maszynaA.add(operacja);
             if (operacja.getCzasGotowosci()>aktualnyCzasA){
+                operacja.setCzasStartu(aktualnyCzasA+operacja.getCzasGotowosci());
                 aktualnyCzasA+=operacja.getCzasGotowosci()+operacja.getCzasTrwania();
                 operacja.setCzasZakonczenia(aktualnyCzasA);
                 operacja.przypiszCzasGotowosciDrugiejOperacji();
                 return;
             }
             else{
+                operacja.setCzasStartu(aktualnyCzasA);
                 aktualnyCzasA+=operacja.getCzasTrwania();
                 operacja.setCzasZakonczenia(aktualnyCzasA);
                 operacja.przypiszCzasGotowosciDrugiejOperacji();
@@ -40,6 +42,8 @@ public class Rozwiazanie {
         else{                                           //jezeli operacja na maszynie B
             if (iloscMaintenanceLeft==0){               //jezeli nie ma przed nami zadnych maintenance to NIE MOZEMY sprobowac dostac obiektu na nastepnej pozycji
                 maszynaB.add(operacja);
+                operacja.setCzasStartu(aktualnyCzasB);
+                aktualnyCzasB+=operacja.getCzasTrwania();
                 operacja.przypiszCzasGotowosciDrugiejOperacji();
                 return;
             }
@@ -49,6 +53,7 @@ public class Rozwiazanie {
 
                 if(operacja.getCzasStartu()<aktualnyCzasB && (aktualnyCzasB+operacja.getCzasTrwania())<obiektNaMaszynie.getCzasStartu()){ //jezeli operacja zmiesci sie przed maintenance
                     maszynaB.add(pozycjaNaMaszynieB,operacja);
+                    operacja.setCzasStartu(aktualnyCzasB);
                     pozycjaNaMaszynieB++;
                     aktualnyCzasB+=operacja.getCzasTrwania();
                     operacja.setCzasZakonczenia(aktualnyCzasB);
@@ -59,6 +64,7 @@ public class Rozwiazanie {
                     maszynaB.add(pozycjaNaMaszynieB,operacja);
                     pozycjaNaMaszynieB++;
                     aktualnyCzasB=operacja.getCzasStartu()+operacja.getCzasTrwania();
+                    operacja.setCzasStartu(aktualnyCzasB);
                     operacja.setCzasZakonczenia(aktualnyCzasB);
                     operacja.przypiszCzasGotowosciDrugiejOperacji();
                     return;
@@ -79,15 +85,15 @@ public class Rozwiazanie {
     public void WyswietlRozwiazanie(){
         System.out.println("Maszyna A | B ");
         for (int i=0; i<maszynaB.size();i++){
-            String mB = (maszynaB.get(i).getClass()==Maintenance.class) ? "MAINTENANCE -" + maszynaB.get(i).getCzasStartu()
+            String mB = (maszynaB.get(i).getClass()==Maintenance.class) ? "MAINTENANCE " + maszynaB.get(i).getCzasStartu()
                     + ":" + maszynaB.get(i).getCzasTrwania():
                     Integer.toString(maszynaB.get(i).getIndex()) + "_"+
-                            Integer.toString(maszynaB.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaB.get(i).getCzasStartu()
+                            Integer.toString(maszynaB.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaB.get(i).getCzasStartu2()
                     + ":" + maszynaB.get(i).getCzasTrwania();
             String mA;
             if(maszynaA.size()> i){
                 mA = Integer.toString(maszynaA.get(i).getIndex()) + "_"+
-                        Integer.toString(maszynaA.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaA.get(i).getCzasStartu()
+                        Integer.toString(maszynaA.get(i).getNumerOperacjiWZadaniu()) + " " + maszynaA.get(i).getCzasStartu2()
                             + ":" + maszynaA.get(i).getCzasTrwania();
                 if(maszynaA.get(i).getIndex() >=10){
                     System.out.println( i +" Zadanie nr: "+ mA + " | " + mB);

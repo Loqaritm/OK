@@ -2,7 +2,6 @@ package com.inf127147inf126151;
 
 public class Operacja extends ObiektNaMaszynie{
     private int czasGotowosci;
-    private int czasTrwania;
     private int czasZakonczenia;
     private boolean maszynaA;
     private int index;
@@ -35,6 +34,11 @@ public class Operacja extends ObiektNaMaszynie{
     public int getCzasStartu() {
         return this.czasGotowosci;
     }  //!!wazne!! bo to moze troche gmatwac kod w klasie Rozwiazanie
+
+    @Override
+    public int getCzasStartu2(){
+        return this.czasStartu;
+    }
 
     @Override
     public int getCzasTrwania() {
@@ -95,4 +99,6 @@ public class Operacja extends ObiektNaMaszynie{
         this.maszynaA = false;
         return this;
     }
+
+
 }
