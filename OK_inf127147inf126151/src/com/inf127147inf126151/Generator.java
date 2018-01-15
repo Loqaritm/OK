@@ -4,7 +4,7 @@ import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 
 public class Generator {
-    public static Rozwiazanie generuj() {
+    public static ArrayList<Zadanie> generuj() {
 
         ArrayList<Zadanie> listaZadan = new ArrayList<Zadanie>();
 
@@ -19,19 +19,21 @@ public class Generator {
             listaZadan.get(i).getDwieOperacje().get(0).generujCzasGotowosci(sumaCzasowWszystkichOperacji);
         }
 
-        ArrayList<ObiektNaMaszynie> listaMaintenance = generujMaintenance();
+        return listaZadan;
+
+//        ArrayList<ObiektNaMaszynie> listaMaintenance = generujMaintenance();
 //        for (int i=0;i<listaMaintenance.size();i++){ //test czy dziala. dziala.
 //            if(listaMaintenance.get(i).getClass()==Maintenance.class) System.out.println(listaMaintenance.get(i).getCzasStartu());;
 //        }
 
 
         //TODO: to powinno byc w petli for (int i=0; i<Stale.domyslnaWielkoscPopulacji; i++) ale zostawiłem bez na razie, dla wygody przegladu.
-        Rozwiazanie rozwiazanie1 = generujRozwiazanie(listaZadan,listaMaintenance);
-        rozwiazanie1.WyswietlRozwiazanie();
-        return rozwiazanie1;
+//        Rozwiazanie rozwiazanie1 = generujRozwiazanie(listaZadan,listaMaintenance);
+//        rozwiazanie1.WyswietlRozwiazanie();
+//        return rozwiazanie1;
     }
 
-    private static ArrayList<ObiektNaMaszynie> generujMaintenance(){  //generuje zadana w stalych liczbe maintenance. maintenance sa posortowane i nie nachodza na siebie
+    public static ArrayList<ObiektNaMaszynie> generujMaintenance(){  //generuje zadana w stalych liczbe maintenance. maintenance sa posortowane i nie nachodza na siebie
         int startPoprzedniego = 0;
         int czasTrwaniaPoprzedniego=0;
 
@@ -49,7 +51,7 @@ public class Generator {
     }
 
     //TODO: PAMIETAC o dodaniu kopiowania listy zadan bo inaczej to troche chujnia z grzybnia. wtedy mozna by zostawic listeZadan statyczna, jako jakis punkt odniesienia, a pracowac przy tworzeniu jednego z rozwiazan na kopii.
-    private static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan, ArrayList<ObiektNaMaszynie> listaMaintenance){
+    public static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan, ArrayList<ObiektNaMaszynie> listaMaintenance){
         Rozwiazanie rozwiazanie = new Rozwiazanie(listaMaintenance);
 
         ArrayList<ArrayList<Integer>> pomocnicza = new ArrayList<>();
