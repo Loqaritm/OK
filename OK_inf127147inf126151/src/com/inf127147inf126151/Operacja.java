@@ -2,7 +2,6 @@ package com.inf127147inf126151;
 
 public class Operacja extends ObiektNaMaszynie{
     private int czasGotowosci;
-    private int czasZakonczenia;
     private boolean maszynaA;
     private int index;
     private Zadanie zadanieRodzic;
@@ -25,6 +24,7 @@ public class Operacja extends ObiektNaMaszynie{
         this.czasGotowosci=(int)(Math.random()*sumaCzasowWszystkichOperacji/4);
     }
 
+    @Override
     public void przypiszCzasGotowosciDrugiejOperacji(){  //wykonujemy na operacji ktora dodajemy do rozwiazania
         if (this.getNumerOperacjiWZadaniu()==1){            //jezeli ta operacja jest wlasnie pierwsza z zadania to
             this.getZadanieRodzic().getDwieOperacje().get(1).setCzasGotowosci(this.czasZakonczenia); //tworzymy czas gotowosci dla drugiej operacji
@@ -74,6 +74,7 @@ public class Operacja extends ObiektNaMaszynie{
         return zadanieRodzic;
     }
 
+    @Override
     public int getCzasGotowosci() {
         return czasGotowosci;
     }
@@ -86,6 +87,7 @@ public class Operacja extends ObiektNaMaszynie{
         this.czasZakonczenia = czasZakonczenia;
     }
 
+    @Override
     public void setCzasGotowosci(int czasGotowosci) {
         this.czasGotowosci = czasGotowosci;
     }

@@ -9,51 +9,44 @@ public class Main {
     public final static ArrayList<ObiektNaMaszynie> listaMaintenance = Generator.generujMaintenance();
 
     public static void main(String[] args) {
-//        Maszyna maszyna = new Maszyna();
-//        maszyna.wyswietlMaintenance();
-
-//        ArrayList<Zadanie> listaZadan = new ArrayList<>();
-//        ArrayList<ObiektNaMaszynie> listaMaintenance = new ArrayList<>();
-//        listaZadan = Generator.generuj();
-//        listaMaintenance = Generator.generujMaintenance();
 
         ArrayList<Rozwiazanie> listaRozwiazan = new ArrayList<>();
 
-        int size = 2;
+        int size = 50;
         for(int i=0; i<size; i++){
             listaRozwiazan.add(Generator.generujRozwiazanie(listaZadan,listaMaintenance));
-            listaRozwiazan.get(i).WyswietlRozwiazanie();
+            //listaRozwiazan.get(i).WyswietlRozwiazanie();
         }
 
 
-        Krzyzowanie k = new Krzyzowanie();
-        Rozwiazanie dziecko = new Rozwiazanie();
+        CrossOver c = new CrossOver();
         for (int i=0; i<size-1; i++){
-            dziecko = k.krzyzuj(listaRozwiazan.get(i),listaRozwiazan.get(i+1));
+            listaRozwiazan.add(c.krzyzuj(listaRozwiazan.get(i),listaRozwiazan.get(i+1)));
         }
 
-        sprawdz(dziecko);
+        System.out.println(listaRozwiazan.size()+ " " + listaRozwiazan);
 
     }
-
-    private static void sprawdz(Rozwiazanie rozwiazanie){
-        for (ObiektNaMaszynie o: rozwiazanie.getMaszynaA()){
-            for(ObiektNaMaszynie e: rozwiazanie.getMaszynaB()){
-                if(o.getIndex() == e.getIndex()){
-                    if(o.getNumerOperacjiWZadaniu() == 1){
-                        if(o.getCzasStartu2()>e.getCzasStartu2()){
-                            System.out.println("WYPIERDOLILEM BLAD");
-                            System.out.println(o.getIndex());
-                        }
-                    }else{
-                        if(o.getCzasStartu2()<e.getCzasStartu2()){
-                            System.out.println("WYPIERDOLILEM BLAD");
-                            System.out.println(o.getIndex());
-                        }
-                    }
-                }
-            }
-        }
-    }
-
 }
+
+//    private static void sprawdz(Rozwiazanie rozwiazanie){
+//        for (ObiektNaMaszynie o: rozwiazanie.getMaszynaA()){
+//            for(ObiektNaMaszynie e: rozwiazanie.getMaszynaB()){
+//                if(o.getIndex() == e.getIndex()){
+//                    if(o.getNumerOperacjiWZadaniu() == 1){
+//                        if(o.getCzasStartu2()>e.getCzasStartu2()){
+//                            System.out.println("WYPIERDOLILEM BLAD");
+//                            System.out.println(o.getIndex());
+//                        }
+//                    }else{
+//                        if(o.getCzasStartu2()<e.getCzasStartu2()){
+//                            System.out.println("WYPIERDOLILEM BLAD");
+//                            System.out.println(o.getIndex());
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+
+

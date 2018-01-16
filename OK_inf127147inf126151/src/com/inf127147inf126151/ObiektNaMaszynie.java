@@ -3,6 +3,7 @@ package com.inf127147inf126151;
 public abstract class ObiektNaMaszynie{
     protected int czasStartu;
     protected int czasTrwania;
+    protected int czasZakonczenia;
     private int index;
 
     public int getCzasStartu() {
@@ -40,4 +41,22 @@ public abstract class ObiektNaMaszynie{
     public Zadanie getZadanieRodzic(){
         return null;
     }
+
+    public int getCzasGotowosci(){
+        return -1;
+    }
+
+    public int getCzasZakonczenia() {
+        return czasZakonczenia;
+    }
+
+    public void setCzasZakonczenia(int czasZakonczenia) {
+        this.czasZakonczenia = czasZakonczenia;
+    }
+
+    public void przypiszCzasGotowosciDrugiejOperacji(){
+        System.out.println("zjebalem sie bo to maintenance i nie dzialam");
+    }
+
+    public abstract void setCzasGotowosci(int czasGotowosci);
 }

@@ -24,8 +24,8 @@ public class Rozwiazanie {
         if (operacja.isMaszynaA()) {
             this.maszynaA.add(operacja);
             if (operacja.getCzasGotowosci()>aktualnyCzasA){
-                operacja.setCzasStartu(aktualnyCzasA+operacja.getCzasGotowosci());
-                aktualnyCzasA+=operacja.getCzasGotowosci()+operacja.getCzasTrwania();
+                operacja.setCzasStartu(operacja.getCzasGotowosci());
+                aktualnyCzasA=operacja.getCzasGotowosci()+operacja.getCzasTrwania();
                 operacja.setCzasZakonczenia(aktualnyCzasA);
                 operacja.przypiszCzasGotowosciDrugiejOperacji();
                 return;
@@ -42,10 +42,21 @@ public class Rozwiazanie {
         else{                                           //jezeli operacja na maszynie B
             if (iloscMaintenanceLeft==0){               //jezeli nie ma przed nami zadnych maintenance to NIE MOZEMY sprobowac dostac obiektu na nastepnej pozycji
                 maszynaB.add(operacja);
-                operacja.setCzasStartu(aktualnyCzasB);
-                aktualnyCzasB+=operacja.getCzasTrwania();
-                operacja.przypiszCzasGotowosciDrugiejOperacji();
-                return;
+                if (operacja.getCzasGotowosci()>aktualnyCzasB){
+                    operacja.setCzasStartu(operacja.getCzasGotowosci());
+                    aktualnyCzasB=operacja.getCzasGotowosci()+operacja.getCzasTrwania();
+                    operacja.setCzasZakonczenia(aktualnyCzasB);
+                    operacja.przypiszCzasGotowosciDrugiejOperacji();
+                    return;
+                }
+                else{
+                    operacja.setCzasStartu(aktualnyCzasB);
+                    aktualnyCzasB+=operacja.getCzasTrwania();
+                    operacja.setCzasZakonczenia(aktualnyCzasB);
+                    operacja.przypiszCzasGotowosciDrugiejOperacji();
+                    return;
+                }
+
             }
 
             else {                                              //jezeli obiekt "nastepny" to maintenance

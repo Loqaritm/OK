@@ -26,4 +26,7 @@ public class Maintenance extends ObiektNaMaszynie implements Comparable<Maintena
     public Object toMaszynaB() {
         return null;
     }
+
+    @Override
+    public void setCzasGotowosci(int czasGotowosci) {}
 }
