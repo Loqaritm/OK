@@ -14,6 +14,7 @@ public class Operacja extends ObiektNaMaszynie{
         this.index=index;
         this.numerOperacjiWZadaniu=numerOperacjiWZadaniu;
         this.zadanieRodzic = zadanieRodzic;
+        this.czasGotowosci=-1;
     }
 
     private void generujCzasTrwania(){
@@ -68,6 +69,7 @@ public class Operacja extends ObiektNaMaszynie{
         return numerOperacjiWZadaniu;
     }
 
+    @Override
     public Zadanie getZadanieRodzic() {
         return zadanieRodzic;
     }
@@ -99,6 +101,7 @@ public class Operacja extends ObiektNaMaszynie{
         this.maszynaA = false;
         return this;
     }
+
 
 
 }

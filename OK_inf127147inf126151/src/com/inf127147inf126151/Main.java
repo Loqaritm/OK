@@ -19,16 +19,41 @@ public class Main {
 
         ArrayList<Rozwiazanie> listaRozwiazan = new ArrayList<>();
 
-        int size = 3;
+        int size = 2;
         for(int i=0; i<size; i++){
             listaRozwiazan.add(Generator.generujRozwiazanie(listaZadan,listaMaintenance));
             listaRozwiazan.get(i).WyswietlRozwiazanie();
         }
 
-//        for (int i=0; i<size-1; i++){
-//            Krzyzowanie.krzyzuj(listaRozwiazan.get(i),listaRozwiazan.get(i+1));
-//        }
 
+        Krzyzowanie k = new Krzyzowanie();
+        Rozwiazanie dziecko = new Rozwiazanie();
+        for (int i=0; i<size-1; i++){
+            dziecko = k.krzyzuj(listaRozwiazan.get(i),listaRozwiazan.get(i+1));
+        }
+
+        sprawdz(dziecko);
+
+    }
+
+    private static void sprawdz(Rozwiazanie rozwiazanie){
+        for (ObiektNaMaszynie o: rozwiazanie.getMaszynaA()){
+            for(ObiektNaMaszynie e: rozwiazanie.getMaszynaB()){
+                if(o.getIndex() == e.getIndex()){
+                    if(o.getNumerOperacjiWZadaniu() == 1){
+                        if(o.getCzasStartu2()>e.getCzasStartu2()){
+                            System.out.println("WYPIERDOLILEM BLAD");
+                            System.out.println(o.getIndex());
+                        }
+                    }else{
+                        if(o.getCzasStartu2()<e.getCzasStartu2()){
+                            System.out.println("WYPIERDOLILEM BLAD");
+                            System.out.println(o.getIndex());
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

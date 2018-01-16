@@ -51,9 +51,9 @@ public abstract class Generator {
     }
 
     //TODO: PAMIETAC o dodaniu kopiowania listy zadan bo inaczej to troche chujnia z grzybnia. wtedy mozna by zostawic listeZadan statyczna, jako jakis punkt odniesienia, a pracowac przy tworzeniu jednego z rozwiazan na kopii.
-    public static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan2, ArrayList<ObiektNaMaszynie> listaMaintenance){
+    public static Rozwiazanie generujRozwiazanie(ArrayList<Zadanie> listaZadan, ArrayList<ObiektNaMaszynie> listaMaintenance){
         Rozwiazanie rozwiazanie = new Rozwiazanie(listaMaintenance);
-        ArrayList<Zadanie> listaZadan = new ArrayList<>(listaZadan2);
+//        ArrayList<Zadanie> listaZadan = new ArrayList<>(listaZadan2);
 
         ArrayList<ArrayList<Integer>> pomocnicza = new ArrayList<>();
         for (int i=0; i<listaZadan.size();i++){

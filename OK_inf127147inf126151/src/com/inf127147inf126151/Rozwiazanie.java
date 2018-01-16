@@ -20,7 +20,7 @@ public class Rozwiazanie {
         iloscMaintenanceLeft=listaMaintenance.size();
     }
 
-    public void dodajOperacje(Operacja operacja){
+    public synchronized void dodajOperacje(Operacja operacja){
         if (operacja.isMaszynaA()) {
             this.maszynaA.add(operacja);
             if (operacja.getCzasGotowosci()>aktualnyCzasA){

@@ -36,4 +36,8 @@ public abstract class ObiektNaMaszynie{
     public void setIndex(int id) {
         this.index = id;
     }
+
+    public Zadanie getZadanieRodzic(){
+        return null;
+    }
 }
